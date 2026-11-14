@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Flame in Freefall mark: orange 1-g teardrop flame around a blue microgravity sphere -->
+  <rect width="64" height="64" rx="14" fill="#0f0f0f"/>
+  <path d="M32 9c8 10.5 15 18.5 15 28.5a15 15 0 0 1-30 0C17 27.5 24 19.5 32 9z" fill="none" stroke="#eb6834" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="32" cy="38" r="8.5" fill="#3987e5"/>
+</svg>
