@@ -1,0 +1,36 @@
+# --- Team-only working documents (kept local, not part of the submission) ---
+/PLAN.md
+/RUNBOOK.md
+/ML_CRASH_COURSE.md
+/COMBUSTION_SCIENCE.md
+/STORYTELLING.md
+/STORYTELLER_BRIEF.md
+/MODEL.md
+/APPROACH.md
+
+# --- Raw NASA PSI files: ~16 GB on an external drive (data/raw is a link to D:/psi_raw) ---
+/data/raw
+/data/raw/
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# --- Downloads in progress / logs ---
+*.part
+*.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

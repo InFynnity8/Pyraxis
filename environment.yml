@@ -1,0 +1,30 @@
+# Conda environment for the Flame in Freefall pipeline, scripts and notebooks.
+#   conda env create -f environment.yml        # first time
+#   conda env update -f environment.yml --prune # after this file changes
+#   conda activate spaceapp
+name: spaceapp
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  # data
+  - numpy
+  - pandas
+  - pyarrow          # .parquet files (tests.parquet)
+  - openpyxl         # .xlsx files from PSI
+  - duckdb           # fast ad-hoc SQL over the tables
+  - pint             # unit conversions
+  # modelling
+  - scikit-learn
+  - joblib
+  - lightgbm         # optional boosting baseline (ML_CRASH_COURSE / notebook experiments)
+  # documents (search index)
+  - pypdf
+  - python-docx
+  - python-pptx
+  # plots + notebooks
+  - matplotlib
+  - jupyterlab
+  - ipykernel
+  - nbformat
+  - nbconvert
