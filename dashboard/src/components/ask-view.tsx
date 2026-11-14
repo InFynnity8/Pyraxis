@@ -128,7 +128,7 @@ export function AskView() {
               <li>24 investigation records</li>
               <li>Parsed test tables (1,709 rows)</li>
               <li>186 reports, papers and presentations</li>
-              <li>NASA official challenge resources (Researcher's Guide, fact sheets)</li>
+              <li>NASA official challenge resources (Researcher&apos;s Guide, fact sheets)</li>
               <li>Project findings and model results (all three layers)</li>
             </ul>
             <p className="pt-1 text-xs">Answers use only these sources. Check important numbers against the cited passage.</p>
