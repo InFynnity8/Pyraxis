@@ -4,6 +4,8 @@
 
 The question behind it: *astronauts are heading to the Moon and Mars with different air (more oxygen, lower pressure) than anything we tested on the ISS. What do 20 years of space-fire experiments tell us about keeping those crews safe, and where are the gaps?*
 
+**▶ Dashboard tour (5½ min, captioned):** [`team_demo/dashboard_tour.mp4`](team_demo/dashboard_tour.mp4)
+
 ---
 
 ## 1. The idea in one picture
@@ -170,7 +172,8 @@ npm run dev            # http://localhost:3000  (if another app already uses 300
 | `data/raw` | Link to the downloaded PSI files on `D:/psi_raw` (not in the project folder) |
 | `data/processed/` | Clean tables (`tests`, `detection`, `smoke_points`), metrics reports, fitted models |
 | `data/official/` | The challenge's official NASA resources (Researcher's Guide, fact sheets, Apollo/Mir pages, spinoffs) |
-| `dashboard/` | The web app |
+| `dashboard/` | The web app (deploy with `dashboard/` as the project root) |
+| `team_demo/` | Captioned video tour of the dashboard (re-record with `scripts/record_demo.py`) |
 | `environment.yml` | Python environment |
 
 ---
