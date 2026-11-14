@@ -1,0 +1,164 @@
+{
+  "prevention": {
+    "n": 102,
+    "positives": 88,
+    "folds": 5,
+    "metrics": {
+      "gp": {
+        "AUC": 0.9176136363636364,
+        "accuracy": 0.9117647058823529,
+        "brier": 0.061560801346679184
+      },
+      "logistic": {
+        "AUC": 0.8863636363636362,
+        "accuracy": 0.8921568627450981
+      },
+      "majority_class_accuracy": 0.8627450980392157,
+      "base_rate_brier": 0.11841599384851982
+    }
+  },
+  "detection": {
+    "smoke_mass_model": {
+      "target": "log10 peak smoke mass (DustTrak, mg/m3)",
+      "n": 69,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "MAE": 0.3357311158557024,
+          "R2": 0.5685652941486178,
+          "95%_interval_coverage": 0.927536231884058
+        },
+        "boosting": {
+          "MAE": 0.3714629160502117,
+          "R2": 0.46945702931661215
+        },
+        "linear": {
+          "MAE": 0.29565459040372843,
+          "R2": 0.581793810455757
+        },
+        "mean": {
+          "MAE": 0.5861345234539601,
+          "R2": -0.029695038336052804
+        }
+      },
+      "features": [
+        "heater level (Rt/R0)",
+        "inlet flow",
+        "aging time",
+        "material"
+      ]
+    },
+    "smoke_point_model": {
+      "target": "smoke-point flame length (mm)",
+      "n": 70,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "MAE": 9.303347518815515,
+          "R2": 0.5563206045565633,
+          "95%_interval_coverage": 0.7428571428571429
+        },
+        "boosting": {
+          "MAE": 12.687798911914598,
+          "R2": 0.16508781031026387
+        },
+        "linear": {
+          "MAE": 9.664473788174831,
+          "R2": 0.571032903504882
+        },
+        "mean": {
+          "MAE": 16.61443219100026,
+          "R2": -0.08076136261079925
+        }
+      }
+    }
+  },
+  "suppression": {
+    "models": {
+      "burning_rate": {
+        "target": "burning_rate_mm2_s",
+        "n": 405,
+        "folds": 5,
+        "metrics": {
+          "gp": {
+            "MAE": 0.08440493269860969,
+            "R2": 0.6010941558318901,
+            "95%_interval_coverage": 0.9160493827160494
+          },
+          "boosting": {
+            "MAE": 0.0910288255828508,
+            "R2": 0.5889621344567759
+          },
+          "linear": {
+            "MAE": 0.09201786527901007,
+            "R2": 0.5884023595551844
+          },
+          "mean": {
+            "MAE": 0.15242398807373522,
+            "R2": -0.04599089611137286
+          }
+        }
+      },
+      "extinction_d": {
+        "target": "extinction_d_mm",
+        "n": 340,
+        "folds": 5,
+        "metrics": {
+          "gp": {
+            "MAE": 0.31066113338621404,
+            "R2": 0.9119415028384359,
+            "95%_interval_coverage": 0.8264705882352941
+          },
+          "boosting": {
+            "MAE": 0.4086927704183453,
+            "R2": 0.8516699638801138
+          },
+          "linear": {
+            "MAE": 0.3532843618525893,
+            "R2": 0.9017016029247265
+          },
+          "mean": {
+            "MAE": 1.599936998395642,
+            "R2": -0.42716737024356055
+          }
+        }
+      },
+      "outcome": {
+        "target": "P(extinguished vs disrupted)",
+        "n": 234,
+        "folds": 5,
+        "metrics": {
+          "gp": {
+            "AUC": 0.8271203656678517,
+            "accuracy": 0.7735042735042735
+          },
+          "logistic": {
+            "AUC": 0.8126968004062975,
+            "accuracy": 0.7478632478632479
+          },
+          "majority_class_accuracy": 0.7649572649572649
+        }
+      },
+      "cool_flame": {
+        "target": "P(cool flame keeps burning after the hot flame goes out) - CFI",
+        "n": 145,
+        "folds": 5,
+        "metrics": {
+          "gp": {
+            "AUC": 0.7665130568356374,
+            "accuracy": 0.8275862068965517
+          },
+          "logistic": {
+            "AUC": 0.728110599078341,
+            "accuracy": 0.8551724137931035
+          },
+          "majority_class_accuracy": 0.8551724137931035
+        }
+      }
+    },
+    "training_data": {
+      "FLEX": 274,
+      "CFI": 227
+    }
+  }
+}

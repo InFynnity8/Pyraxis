@@ -1,0 +1,148 @@
+{
+  "n_rows_total": 1709,
+  "validation": "GroupKFold by test campaign (FLEX campaign prefix, CFI test month)",
+  "features": [
+    "o2_frac",
+    "pressure_kpa",
+    "he_frac",
+    "co2_frac",
+    "droplet_d0_mm",
+    "fuel_carbons",
+    "is_alcohol",
+    "branched_frac"
+  ],
+  "models": {
+    "burning_rate": {
+      "target": "burning_rate_mm2_s",
+      "n": 405,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "MAE": 0.08440493269860969,
+          "R2": 0.6010941558318901,
+          "95%_interval_coverage": 0.9160493827160494
+        },
+        "boosting": {
+          "MAE": 0.0910288255828508,
+          "R2": 0.5889621344567759
+        },
+        "linear": {
+          "MAE": 0.09201786527901007,
+          "R2": 0.5884023595551844
+        },
+        "mean": {
+          "MAE": 0.15242398807373522,
+          "R2": -0.04599089611137286
+        }
+      }
+    },
+    "extinction_d": {
+      "target": "extinction_d_mm",
+      "n": 340,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "MAE": 0.31066113338621404,
+          "R2": 0.9119415028384359,
+          "95%_interval_coverage": 0.8264705882352941
+        },
+        "boosting": {
+          "MAE": 0.4086927704183453,
+          "R2": 0.8516699638801138
+        },
+        "linear": {
+          "MAE": 0.3532843618525893,
+          "R2": 0.9017016029247265
+        },
+        "mean": {
+          "MAE": 1.599936998395642,
+          "R2": -0.42716737024356055
+        }
+      }
+    },
+    "outcome": {
+      "target": "P(extinguished vs disrupted)",
+      "n": 234,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "AUC": 0.8271203656678517,
+          "accuracy": 0.7735042735042735
+        },
+        "logistic": {
+          "AUC": 0.8126968004062975,
+          "accuracy": 0.7478632478632479
+        },
+        "majority_class_accuracy": 0.7649572649572649
+      }
+    },
+    "cool_flame": {
+      "target": "P(cool flame keeps burning after the hot flame goes out) - CFI",
+      "n": 145,
+      "folds": 5,
+      "metrics": {
+        "gp": {
+          "AUC": 0.7665130568356374,
+          "accuracy": 0.8275862068965517
+        },
+        "logistic": {
+          "AUC": 0.728110599078341,
+          "accuracy": 0.8551724137931035
+        },
+        "majority_class_accuracy": 0.8551724137931035
+      }
+    }
+  },
+  "training_data": {
+    "FLEX": 274,
+    "CFI": 227
+  },
+  "habitat_coverage": {
+    "Earth sea level": {
+      "tests_within_5pctO2_25pctP": 579,
+      "by_investigation": {
+        "BASS": 121,
+        "BASS-II": 114,
+        "FLEX": 110,
+        "CFI": 85,
+        "ACME Flame Design": 71,
+        "ACME CFI-G": 35,
+        "FLEX-2": 24,
+        "ACME s-Flame": 10,
+        "SAFFIRE-II": 7,
+        "SAFFIRE-I": 2
+      }
+    },
+    "ISS cabin": {
+      "tests_within_5pctO2_25pctP": 576,
+      "by_investigation": {
+        "BASS": 120,
+        "BASS-II": 112,
+        "FLEX": 110,
+        "CFI": 85,
+        "ACME Flame Design": 71,
+        "ACME CFI-G": 35,
+        "FLEX-2": 24,
+        "ACME s-Flame": 10,
+        "SAFFIRE-II": 7,
+        "SAFFIRE-I": 2
+      }
+    },
+    "Moon base / rover (expected)": {
+      "tests_within_5pctO2_25pctP": 17,
+      "by_investigation": {
+        "FLEX": 17
+      }
+    },
+    "Mars habitat (assumed = Moon)": {
+      "tests_within_5pctO2_25pctP": 17,
+      "by_investigation": {
+        "FLEX": 17
+      }
+    },
+    "Spacesuit": {
+      "tests_within_5pctO2_25pctP": 0,
+      "by_investigation": {}
+    }
+  }
+}
