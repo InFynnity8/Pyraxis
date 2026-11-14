@@ -1,0 +1,123 @@
+as_run_row,test_id,note_start,outcome,extinguished_by,n2_jet
+2,1,"Nice symmetric burn, some soot at 10 cm/",burned,burnout,
+3,2,Don noted significant vapor jetting.   F,burned,,
+4,3,Very bright sooty ball.   Lots of vapor ,burned,low flow,partial
+5,4,"~ 40 s burn, Don asked if images were to",burned,,
+6,5,"~ 60 s burn,   Don  said he like to watc",burned,,
+7,6,same sphere as previous.   Did not remov,unknown,,
+8,7,Filter on test.  Don didn't reset the ca,unknown,,
+9,8,No filter on this test.  Don didn't rese,burned,low flow,failed
+10,9,sample 18 and 19 mix up on names.  Loggi,burned,low flow,
+11,10,Still a sooty flame even at 1 cm/s.  Tur,burned,low flow,
+12,11,"Burning laminar but sooty at 42, turned ",burned,burnout,
+13,12,"Originally identified sample as 7, but 7",burned,,
+14,13,"Huge ignition kernel, then rest of video",burned,,
+15,14,Ignited and burned for only 2 s.  Died w,"ignited, not self-sustaining",,
+16,15,No Don camera.  Wake flame very dim on v,burned,low flow,failed
+17,16,"difficult to ignite,very dim blue, got s",burned,low flow,failed
+18,17,Adjusted igniter closer.  LOS  after fan,burned,low flow,
+19,18,readjusted igniter again.  Fan 41 at 17:,burned,low flow,
+20,19,bonus test.  LOS partway through burn. D,burned,low flow,
+21,20,"new 1 cm sphere. Got sooty quickly,  ove",burned,,
+22,21,"ignited within 15 s (still hot?),   soot",burned,low flow,
+23,22,Don says sphere is ~ 0.7 cm.   Igniter h,burned,,
+24,23,Igniter too far away 2st attempt 15:48. ,burned,,
+25,24,preheated by briefly heating igniter wir,no ignition,,
+26,24,"12 pulses and then on, no joy. Not even ",no ignition,,
+27,25,sphere closer to nozzle. New igniter.  1,burned,low flow,partial
+28,26,"moved sphere 1 cm downstream, readjusted",burned,,partial
+29,27, Flame from GMT 15:30:00 to 15:33:00) Ig,burned,low flow,
+30,28,(Flame from GMT 15:44:30 to 15:47:10) Ig,burned,low flow,
+31,29,"Joe 1st day, ignited at 9.75 cm/s,  flam",burned,low flow,
+32,30,"ignited at 10 cm/s, fan to 42,   less va",burned,low flow,
+33,31,"adjusted igniter, start at 60, ignite, f",burned,low flow,failed
+34,32," adjusted igniter, ignited at 43,  he st",burned,burnout,
+35,33,"Joe, multiops procedures.  Nice over the",burned,,
+36,34,"sooty at 1:15 , 4 minute burn, got long ",burned,,
+37,35,"started all blue, got sooty tail , wrapp",burned,low flow,
+38,36,"Ignited and turned flow down, then N2 on",burned,low flow,failed
+39,37,"ignite at 5 cm/s, reduce to 3, 1.5, 1.  ",burned,low flow,
+40,38,ignited and left igniter on until flame ,burned,,
+41,39,"Ignition was very quick, and very sooty.",burned,burnout,
+42,40,Igniter seems to have broken prior to ig,unknown,,
+43,41,"Ign at low flow (41.5 fan, ~ 1 cm/s).  Q",burned,low flow,failed
+44,42,"long ignition, fully engulfed by the end",burned,burnout,
+45,43,"just smoked slightly, no ignition.",no ignition,,
+46,44,Using preburned sample in opposed flow c,burned,burnout,
+47,45,"opposed flow flame test,  steady spread ",burned,burnout,
+48,46,"1st candle test!  Bracketing,    very so",burned,low flow,
+49,47,BG-7 filter on camera for bracketing set,burned,low flow,
+50,48,"same candle, no filter, changed iso.  Bu",burned,burnout,
+51,49,re-ignite slightly downstream where blac,"ignited, not self-sustaining",,
+52,50,"igniter 15-1 broke during setup, put in ","ignited, not self-sustaining",,
+53,51,"ignited on 3rd try,   started getting so",burned,low flow,failed
+54,52,"ignited after a few tries,   turned N2 o",burned,low flow,failed
+55,53,"ignited at 62, fan up to 87 then 100,   ",burned,N2,extinguished
+56,54,N2 repress going on during this ops ~ 3 ,burned,,
+57,55,Did not blow out.  Got smaller at max fl,burned,,
+58,56,leave igniter on entire test to provide ,no ignition,,
+59,57,brief ignition and extinguished in ~ 3 s,"ignited, not self-sustaining",,
+60,58,brief ignition and extinguished after 4 ,"ignited, not self-sustaining",,
+61,59,igniter broke before ignition.  No still,unknown,,
+62,60,"igniter 2-6 unstowed as broken, so no mo",burned,,partial
+63,61,try blowing out the flame with GN2. blew,burned,,partial
+64,62,flame did blow out with GN2 at about a p,burned,N2,extinguished
+65,63,"1,2,3,3.5,5, 6, 10 pot on GN2.  Stag ble",burned,,partial
+66,64,Igniter is broken!   Igniter inventory d,unknown,,
+67,nan,Joe completed the soot cleaning and we a,unknown,,
+68,65,"nice burn, left igniter on a bit long an",burned,,
+69,66,sample 7 apparently not used.   (Don sup,burned,burnout,
+70,67,"spice igniter, sample 22, trying to see ",burned,,
+71,68,Over the shoulder view.  iso auto contro,burned,,
+72,69,"realigned crooked candle, cleaned window",burned,,
+73,70,"same candle, 3rd test,  trying for longe",burned,burnout,
+74,71,P mode is auto-everything. Very long bur,burned,low flow,
+75,72,A mode.   Trying to heat and then step t,burned,low flow,
+76,73, Last one with over the shoulder view on,burned,low flow,
+77,74,Turned on N2 at each flow setting starti,burned,low flow,failed
+78,75,"higher flow test, but ran out of fuel to",burned,burnout,
+79,76,ignited well and had initial sooty flame,burned,,
+80,77,"igniter didn't work, must have burned ou",burned,,
+81,78,first wax slab test.   Ignited nicely.  ,burned,burnout,
+82,79,tried igniting at 6 cm/s.  Flame went ou,"ignited, not self-sustaining",,
+87,80,1st vititation test with CSA-CP.  N2 on ,burned,,vitiation only
+88,81,same atmosphere.  Re-igntion after remov,burned,low flow,
+89,82,"wake ign,  3/3 initial frames before bra",burned,,
+90,83,"wake ign,    dim flame propagates upstre",burned,,
+91,84,"wake ign,     fan pot to 0.5 (42), start",burned,low flow,
+92,85,"wake ign   too far away, needed to go in",burned,low flow,
+93,85,"increased flow to 20 cm/s, got a very so",burned,,
+94,86,"sample is actually down to about 1 cm,  ",burned,,vitiation only
+95,87,"new candle,   started GN2 at 15:26 00 gm",burned,,vitiation only
+96,88,"changed out card for unknown card, 1 han",burned,burnout,
+97,89,"new sphere,  issue with numbers,  sample",burned,,vitiation only
+98,90,"Gn2 start, max, at msg 13:07:40,  off 14",burned,low flow,vitiation only
+99,91,Igniter too far away readjusted 1 handed,burned,burnout,
+100,89,LONG candle burn at very low flow rates.,burned,low flow,
+101,90,Ign took 3 min.  Only spread top half of,burned,low flow,
+102,91,"Ign took 2 min, flame on top half.  Used",burned,low flow,failed
+103,92,Ign in 1 min.  Symmetric growth.  Gets s,burned,low flow,
+104,93,"repeated ignition attempts, no luck at 5","ignited, not self-sustaining",,
+105,94,"took about 3 min to ignite, repeated att",burned,low flow,
+106,95,"flame lit on 2nd try,  quickly turned so",burned,burnout,
+107,96,"repeated ignition attempts, no luck keep","ignited, not self-sustaining",,
+108,97,moved igniter upstream of 'crater' we cr,"ignited, not self-sustaining",,
+109,98,broke 2 igniters on this trying to get i,burned,low flow,
+110,99,started igniting the protrusion and then,burned,low flow,
+111,100,ignited 'concurrent' or stagnation.17:45,burned,low flow,
+112,101,"no ignition, despite prolonged attempted",unknown,,
+113,102,nice blue flame with inner soot until lo,burned,burnout,
+114,103,new sample. Blue flame wrapped around le,burned,low flow,
+115,104,"new sphere,  took 4 min to ignite with r",burned,,
+116,105,broke igniter just before it was going t,burned,,
+117,106,broke igniter.    All blue with intermit,burned,,
+118,107,broke  2 igniters.   No ignition on this,unknown,,
+119,108,"new igniter, anneal it.  3 min to ignite",burned,,
+120,109,"nice over the shoulder view, very hard t",burned,,
+121,110,stills during ignition.flame ignited ove,burned,low flow,
+122,111,got dim flame with stills during ignitio,burned,low flow,
+123,112,igniter 20-11 wass reported broken when ,"ignited, not self-sustaining",,
+124,113,tried igniting in air at 10 cm/s.  Not e,unknown,,
+125,114,"tried to ignite,  no joy, just a puff of",no ignition,,
+126,115,stagnation ignition in air.  Dynamic flo,burned,,
+127,116,"same as previous, with continuous pictur",burned,low flow,
