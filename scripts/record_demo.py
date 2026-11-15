@@ -2,7 +2,7 @@
 
 Usage:
     1. Start the dashboard:   cd dashboard && npm run dev      (note the port it prints)
-    2. python scripts/record_demo.py --url http://localhost:3001 --out team_demo/dashboard_tour.mp4
+    2. python scripts/record_demo.py --url http://localhost:3000 --out team_demo/dashboard_tour.mp4
 
 Drives the installed Microsoft Edge with Playwright, visits every page, scrolls through each section,
 clicks the main toggles, asks one question in "Ask the data", and shows an on-screen caption explaining
@@ -202,11 +202,17 @@ def tour(d: Demo):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--url", default="http://localhost:3001")
+    ap.add_argument("--url", default="http://localhost:3000")
     ap.add_argument("--out", default="team_demo/dashboard_tour.mp4")
     ap.add_argument("--light", action="store_true", help="record in light theme (default dark)")
     a = ap.parse_args()
     out = pathlib.Path(a.out); out.parent.mkdir(parents=True, exist_ok=True)
+    import urllib.request
+    try:
+        urllib.request.urlopen(a.url, timeout=10)
+    except Exception:
+        raise SystemExit(f"No dashboard answering at {a.url}. Start it first:  cd dashboard && npm run dev"
+                         "   (then pass the port it prints with --url)")
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="demo_"))
     with sync_playwright() as pw:
         br = pw.chromium.launch(channel="msedge", headless=True)
