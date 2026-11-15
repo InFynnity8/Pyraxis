@@ -122,6 +122,17 @@ def tour(d: Demo):
     d.say("<b>Compare</b> - put up to 4 investigations side by side; identical rows are greyed so differences stand out.", 5)
     d.glide(500, secs=3)
 
+    # ---- Fire simulator
+    d.go("/simulator", 1.5)
+    d.say("<b>Fire simulator</b> - a live physics simulation: two habitat atmospheres side by side, from ignition to detection to suppression.", 6)
+    d.click_text("Fans off: ISS vs Earth", 1)
+    d.say("Same fire, fans shut off: in orbit the flame starves and goes out; on Earth buoyancy keeps feeding it - exactly what BASS saw.", 9)
+    d.click_text("Hidden smoke: overheated wiring", 1)
+    d.say("Overheated wire insulation: the ionisation detector catches its fine smoke - the photoelectric one does not (the SAME finding).", 9)
+    d.click_text("Apollo 1 vs today's ISS", 1)
+    d.say("Apollo 1's pure-oxygen cabin vs today's ISS air. Below each panel: how many real NASA tests back that scenario.", 8)
+    d.glide(600, secs=3)
+
     # ---- Fire-safety layers
     d.go("/layers")
     d.say("<b>Fire-safety layers</b> - the heart of the project: <b>prevent</b> fires, <b>detect</b> them early, <b>suppress</b> them for good.", 5)

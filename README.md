@@ -4,7 +4,7 @@
 
 The question behind it: *astronauts are heading to the Moon and Mars with different air (more oxygen, lower pressure) than anything we tested on the ISS. What do 20 years of space-fire experiments tell us about keeping those crews safe, and where are the gaps?*
 
-**▶ Dashboard tour (5½ min, captioned):** [`team_demo/dashboard_tour.mp4`](team_demo/dashboard_tour.mp4)
+**▶ Dashboard tour (captioned):** [`team_demo/dashboard_tour.mp4`](team_demo/dashboard_tour.mp4)
 
 ---
 
@@ -28,8 +28,9 @@ On top of that sits **"Ask the data"**: a question box that answers from the PSI
 2. **One clean table, every value traceable.** Each investigation stores its results differently, so we wrote one small converter per investigation. All of them write to a single schema with SI units, oxygen as a fraction, and oxygen partial pressure. Every row keeps its **source file and row number**. When a value had to be assumed (e.g. ISS cabin pressure where a table omits it), it is flagged, never silently filled. While doing this we found and corrected several data-entry errors in the PSI tables (a 0 mmHg pressure, Excel turning "34" into "3400%").
 3. **We went past the summary tables when they weren't enough.** For Detection we read the 1-second instrument logs of 120 smoke tests. For Prevention we read all 122 of the ISS crew's written test notes and labelled every test by hand (the labels are published in `pipeline/labels/`). For Suppression we added the CFI investigators' own data summary. That last step alone lifted our burning-rate model from R² 0.39 to 0.60.
 4. **Small-data models that know when they don't know.** With hundreds (not millions) of experiments we use Gaussian processes. They give a prediction *and* an uncertainty, and the uncertainty is the point: it shows where NASA lacks data for Moon and Mars habitats.
-5. **Strict, honest validation.** Models are scored only on test campaigns they never saw (grouped cross-validation; a random split would leak shared hardware and fuel batches and inflate the scores). Every score is shown next to simple baselines. Where a model is weak (Prevention), the dashboard says so.
+5. **Strict, honest validation.** Models are scored only on test campaigns they never saw (grouped cross-validation; a random split would leak shared hardware and fuel batches and inflate the scores). Every score is shown next to simple baselines, and every page states its limits.
 6. **Answers with sources.** *Ask the data* searches 4,500+ passages from PSI reports, papers and NASA's official challenge resources (BM25 keyword retrieval). An AI model then answers **only from the retrieved passages**, with numbered citations. Without an AI key it falls back to plain search, so it never invents an answer.
+7. **From data to a living picture.** A physics-based fire simulator, calibrated on those NASA findings, lets anyone watch a fire start, get detected and be suppressed in any habitat's air, with an evidence meter that shows how many real tests stand behind each scenario.
 
 **Use of AI:** AI models (Claude, with Groq / Hugging Face as fallbacks) power the *Ask the data* answers, always grounded in cited NASA sources. AI coding assistants helped write code and documentation. All scientific numbers come from NASA PSI data, and all models are standard, inspectable scikit-learn models.
 
@@ -94,24 +95,43 @@ Not a model: a map of **where tests exist** in oxygen × pressure space. **Over 
 | **Flammability Map** (`/map`) | Show at a glance where NASA has tested and where it hasn't | Prevention + Suppression | Every test plotted by oxygen × pressure, with the ISS, Moon, Mars and spacesuit zones; click a point for its source file and row |
 | **Investigations** (`/investigations`) | Make the 24 PSI investigations easy to browse | All | Search and filter; each detail page has objectives, hypothesis, hardware, publications and the parsed tests |
 | **Compare** (`/compare`) | Compare experiments side by side | All | Up to 4 investigations; rows that are identical are greyed so the differences stand out |
+| **Fire simulator** (`/simulator`) | **See** a cabin fire in any habitat's air: ignition, flame shape, detection and suppression, side by side | All three | Live physics simulation of two atmospheres at once (ISS, Moon base, rover, Mars, spacesuit, Earth, Apollo 1); detector gauges, crew response, event timeline, and an evidence meter counting the real NASA tests behind each scenario |
 | **Fire-safety layers** (`/layers`) | Answer the challenge's three questions: prevent, detect, suppress | All three | One section per layer: the question, the data, charts, model scores next to baselines, and the limits |
 | **Ask the data** (`/ask`) | Let anyone question 20 years of reports in plain English | All, mainly Detection | Answers written only from PSI documents and NASA resources, with numbered sources you can open |
 | **Predictions** (`/model`) | Predict flames in atmospheres nobody has tested yet, and say how sure we are | Suppression | Burning rate per habitat with a 95 % range; prediction and uncertainty heat maps (bright = test here next); habitat outlook table with all four suppression models; model scores vs baselines |
 | **Method & Earth** (`/about`) | Explain how it works and why it matters on Earth | Context | Method, stated limits, Earth uses (smoke detectors, firefighting gear, aircraft cabins), and **Download the data**: every dataset as CSV |
 
+### The fire simulator
+
+A physics-based simulation that runs live in the browser: a 24 × 16 cm slice of cabin around a burning sample, solved on a 96 × 64 grid every frame. It models air flow with **buoyancy that scales with gravity** (none in orbit, 1/6 g on the Moon, 1 g on Earth), combustion whose rate rises with **oxygen concentration**, **diffusion that speeds up at low pressure**, radiative heat loss, solid fuel that gasifies when hot, smoke transport, **two smoke detectors** (photoelectric and ionisation) and **four crew responses** (ventilation shut-off, CO₂, water mist, nitrogen jet).
+
+It is **calibrated on our NASA findings**, and reproduces them without being told the answers scenario by scenario:
+
+| Behaviour in the simulator | NASA evidence |
+|---|---|
+| Acrylic stops burning between 15 and 17 % O₂; Nomex only burns in Moon-base air; wire insulation only in pure oxygen | BASS: lowest O₂ that burned 16.7 %; Nomex sustained a flame in 1 of 6 tests; material oxygen indices |
+| In still microgravity air the flame starves and smoke never reaches the detectors | BASS: flames went out when the airflow stopped |
+| Shutting off the fans puts out an ISS fire but not an Earth fire (buoyancy keeps feeding it) | BASS: cutting the airflow put out 44 flames |
+| A nitrogen jet rarely puts the flame out; CO₂ and water mist do | BASS: nitrogen jets put out 2 of 18 flames |
+| Overheated wire insulation trips the ionisation detector but not the photoelectric one | SAME/SAME-R: fine Teflon/Kapton smoke; obscuration responded in ~38 % of tests |
+| Moon and Mars sit between the microgravity and 1 g cases | The challenge: microgravity and normal gravity bound partial gravity |
+
+Six **guided comparisons** set up the key stories in one click (ISS vs Moon base, fans off in space vs on Earth, hidden smoke from wiring, flight-suit fabric, Apollo 1 vs today's ISS, nitrogen jet vs CO₂). Every scenario shows an **evidence meter**: how many real NASA tests sit near that atmosphere, so you can see where the simulation stands on data and where it extrapolates. It is a reduced-order teaching and exploration model (2-D, laminar, centimetre scale): it shows trends and comparisons, not certified fire predictions.
+
 ### How to use it: a 5-minute walkthrough
 
 1. **Start at Mission Control** (`/`). Pick a habitat (ISS, Moon base, Mars, spacesuit). You see how many PSI tests come close to that air, the data-gap warnings, and the investigations ranked by relevance. Hover a ranking to see why it scored that way.
-2. **Open Fire-safety layers** (`/layers`, sidebar → *Analyse*). The page reads top to bottom as three sections. The links under the title jump to each one.
+2. **Open the Fire simulator** (`/simulator`). Click a guided comparison, e.g. *Fans off: ISS vs Earth*: the same fire goes out in orbit and keeps burning on Earth. Switch the material to wire insulation and the start to *Electrical overheat* to see the ionisation detector catch smoke the photoelectric one misses. Check the evidence meter under each panel.
+3. **Open Fire-safety layers** (`/layers`, sidebar → *Analyse*). The page reads top to bottom as three sections. The links under the title jump to each one.
    - **1 · Prevention.** The scatter plot shows every labelled BASS test by air flow and oxygen: blue dots kept burning, orange diamonds didn't. Hover a point to read the crew's own note. The table shows, per material, how many tests burned, **the model's predicted chance it keeps burning in ISS air**, the lowest oxygen that still burned, and how flames went out (air flow cut or nitrogen).
    - **2 · Detection.** The heat map shows, for each heated material, the share of tests each of the 5 detectors responded to. Look at the Teflon and Kapton rows under *ISS photoelectric (obscuration)*. The **what-if chart** lets you pick a gas fuel and see when it starts to smoke at each air speed (SPICE model, with its 95 % range and the real flights). The table gives smoke mass, particle count and particle size per material, plus **the model's predicted smoke at low, typical and high heating**.
    - **3 · Suppression.** Four score tiles for the droplet models, a table of how flames ended under each diluent gas (N₂, CO₂, He), two findings (cool flames that keep burning after the visible flame dies; nitrogen jets that rarely put flames out, while cutting the ventilation did), and the **habitat outlook table**: for each habitat's air, how fast a droplet burns, when its flame dies, the chance it goes out cleanly, and the chance a cool flame lingers.
    - **Every section** starts with its question and data source, shows each model's score **next to the simple baselines**, and ends with a **Limit** line. Read those first if a judge asks "how good is it?".
-3. **Go to Predictions** (`/model`) for the Suppression models at each habitat (habitat chart, heat map, habitat outlook table and model scores). Each point has a 95 % range, and hollow points are extrapolations outside the tested range. The heat map toggles between the prediction and its uncertainty: bright areas = where to run the next experiment.
-4. **Use the Flammability Map** (`/map`) to see every test in oxygen × pressure space against the habitat zones. Click a point to see its source file and row.
-5. **Ask the data** (`/ask`). Type a question (e.g. *"How was smoke measured in SAME?"*, *"Which materials kept burning in BASS?"*). The answer cites numbered sources you can open.
-6. **Investigations / Compare** let you browse the 24 PSI investigations, or put up to 4 side by side.
-7. **Download the data** (Method & Earth page, or the buttons on the Map, investigation pages and layer sections): every dataset as CSV (all 1,709 test rows, the 120 smoke tests, the 70 SPICE smoke points, the hand-checked BASS labels), each row traceable to its NASA source.
+4. **Go to Predictions** (`/model`) for the Suppression models at each habitat (habitat chart, heat map, habitat outlook table and model scores). Each point has a 95 % range, and hollow points are extrapolations outside the tested range. The heat map toggles between the prediction and its uncertainty: bright areas = where to run the next experiment.
+5. **Use the Flammability Map** (`/map`) to see every test in oxygen × pressure space against the habitat zones. Click a point to see its source file and row.
+6. **Ask the data** (`/ask`). Type a question (e.g. *"How was smoke measured in SAME?"*, *"Which materials kept burning in BASS?"*). The answer cites numbered sources you can open.
+7. **Investigations / Compare** let you browse the 24 PSI investigations, or put up to 4 side by side.
+8. **Download the data** (Method & Earth page, or the buttons on the Map, investigation pages and layer sections): every dataset as CSV (all 1,709 test rows, the 120 smoke tests, the 70 SPICE smoke points, the hand-checked BASS labels), each row traceable to its NASA source.
 
 ---
 
