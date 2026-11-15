@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Columns3, Gauge, Layers, LineChart, Map, MessageSquareText, Table2, ExternalLink } from "lucide-react";
+import { BookOpen, Columns3, Flame, Gauge, Layers, LineChart, Map, MessageSquareText, Table2, ExternalLink } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -30,6 +30,7 @@ export const NAV = [
   {
     group: "Analyse",
     items: [
+      { href: "/simulator", label: "Fire simulator", icon: Flame },
       { href: "/layers", label: "Fire-safety layers", icon: Layers },
       { href: "/ask", label: "Ask the data", icon: MessageSquareText },
       { href: "/model", label: "Predictions", icon: LineChart },
